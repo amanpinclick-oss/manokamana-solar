@@ -1,0 +1,26 @@
+baseURL = 'https://amanpinclick-oss.github.io/manokamana-solar/'
+languageCode = 'en-us'
+title = 'Manokamana Solar – Industrial & Commercial EPC'
+theme = 'PaperMod'
+
+[params]
+    description = "Leading Solar EPC for factories, warehouses & commercial rooftops in India."
+    author = "Manokamana Solar"
+
+[menu]
+    [[menu.main]]
+        name = "Home"
+        url = "/"
+        weight = 10
+    [[menu.main]]
+        name = "Industrial"
+        url = "/industrial"
+        weight = 20
+    [[menu.main]]
+        name = "Commercial"
+        url = "/commercial"
+        weight = 30
+    [[menu.main]]
+        name = "Blog"
+        url = "/blog"
+        weight = 40
