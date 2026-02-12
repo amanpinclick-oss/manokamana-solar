@@ -1,9 +1,0 @@
-flask
-gunicorn
-requests
-google-api-python-client
-google-auth-oauthlib
-google-auth-httplib2
-pytrends
-twilio
-# Note: ollama-python is expected to be available for ollama integration
