@@ -1,0 +1,12 @@
+{
+    "entity_name": "Industrial Client 3",
+    "industry": "manufacturing",
+    "system_capacity_kw": 140.62,
+    "environmental_impact": {
+        "annual_co2_offset_tons": 166.05,
+        "equivalent_trees_planted": 7472,
+        "coal_combustion_avoided_kg": 66420
+    },
+    "status": "Validated by Manokamana Governance Engine",
+    "timestamp": "now"
+}

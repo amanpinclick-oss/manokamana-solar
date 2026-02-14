@@ -6,7 +6,7 @@ class ROICalculator:
     Calculates CAPEX, monthly savings, and payback period.
     """
 
-    def __init__(self, cost_per_kw: float = 60000.0, units_per_kw_monthly: float = 120.0, rate_per_unit: float = 8.0):
+    def __init__(self, cost_per_kw: float = 50000.0, units_per_kw_monthly: float = 120.0, rate_per_unit: float = 8.0):
         self.cost_per_kw = cost_per_kw
         self.units_per_kw_monthly = units_per_kw_monthly
         self.rate_per_unit = rate_per_unit
