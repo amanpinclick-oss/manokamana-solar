@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence Report | Manokamana Solar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-content {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        .blog-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .blog-meta {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin-bottom: 40px;
+        }
+
+        .blog-body {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .blog-body p {
+            margin-bottom: 24px;
+        }
+
+        .blog-body h2,
+        .blog-body h3 {
+            color: #fff;
+            margin: 48px 0 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container--full">
+        <header class="container fade-in">
+            <a href="index.html" class="logo">MANOKAMANA.SOLAR</a>
+            <nav>
+                <a href="index.html">Intelligence</a>
+                <a href="index.html#blogs">Insights</a>
+                <a href="dashboard.html">Live Dashboard</a>
+            </nav>
+        </header>
+
+        <article class="blog-content fade-in">
+            <div id="blog-meta" class="blog-meta">High Authority Report | Agentic SEO Engine</div>
+            <h1 id="blog-title">Analyzing Site Potential...</h1>
+            <div id="blog-body" class="blog-body">
+                <div class="glass" style="padding: 40px; text-align: center;">
+                    Retrieving intelligence from memory engine...
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer style="padding: 100px 0 60px; text-align: center; color: var(--text-secondary);">
+        <p style="font-size: 0.9rem; letter-spacing: 1px;">&copy; 2026 MANOKAMANA SOLAR OS | AGENTIC GROWTH ENGINE</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Simple client-side markdown-ish rendering for this demo
+        async function loadBlogPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const slug = urlParams.get('slug') || 'solar-roi-for-industrial-clients';
+
+            try {
+                const response = await fetch(`../content/blogs/${slug}.md`);
+                if (!response.ok) throw new Error('Post not found');
+                const text = await response.text();
+
+                const lines = text.split('\n');
+                const titleMatch = text.match(/# (.*)/);
+
+                if (titleMatch) document.getElementById('blog-title').innerText = titleMatch[1];
+
+                // Very basic markdown parsing
+                const body = lines.slice(5).map(line => {
+                    if (line.startsWith('## ')) return `<h2>${line.substring(3)}</h2>`;
+                    if (line.startsWith('### ')) return `<h3>${line.substring(4)}</h3>`;
+                    if (line.trim() === '') return '';
+                    return `<p>${line}</p>`;
+                }).join('');
+
+                document.getElementById('blog-body').innerHTML = body;
+            } catch (e) {
+                document.getElementById('blog-body').innerHTML = '<div class="glass" style="padding: 40px;">Report details are still being synthesized by the engine. Please check back shortly.</div>';
+            }
+        }
+        loadBlogPost();
+    </script>
+</body>
+
+</html>

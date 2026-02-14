@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine Intelligence | Manokamana Solar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+        <header class="fade-in">
+            <a href="index.html" class="logo">MANOKAMANA.SOLAR</a>
+            <nav>
+                <a href="index.html">Intelligence</a>
+                <a href="index.html#blogs">Insights</a>
+                <a href="dashboard.html">Live Dashboard</a>
+            </nav>
+        </header>
+
+        <section class="fade-in" style="margin-top: 60px;">
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h1 style="font-size: 3.5rem; margin-bottom: 12px; letter-spacing: -1px;">Engine Performance</h1>
+                    <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 600px;">
+                        Real-time lead intelligence and autonomous operations monitoring for the Manokamana Solar
+                        ecosystem.
+                    </p>
+                </div>
+                <div class="glass" style="padding: 16px 24px; display: flex; flex-direction: column; gap: 8px;">
+                    <div class="pulse-wrapper">
+                        <div class="pulse"></div>
+                        ENGINE LIVE
+                    </div>
+                    <div id="last-updated"
+                        style="font-size: 0.7rem; color: var(--text-secondary); font-family: monospace;">Syncing...
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="glass stat-card">
+                    <h3>Total Solar Leads</h3>
+                    <div id="stat-total-leads" class="value">0</div>
+                </div>
+                <div class="glass stat-card">
+                    <h3>High-Intent (Tier A)</h3>
+                    <div id="stat-tier-a" class="value">0</div>
+                </div>
+                <div class="glass stat-card">
+                    <h3>Engine Health</h3>
+                    <div id="stat-health" class="value">100%</div>
+                </div>
+                <div class="glass stat-card">
+                    <h3>Growth Phase</h3>
+                    <div id="stat-phase" class="value">INITIALIZING</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px; margin-bottom: 100px;">
+                <h2 style="margin-bottom: 32px; font-size: 2rem;">Priority Lead Stream</h2>
+                <div class="glass" style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 600px;">
+                        <thead>
+                            <tr style="background: rgba(255, 255, 255, 0.02);">
+                                <th style="padding: 24px;">Capture Time</th>
+                                <th style="padding: 24px;">Quality Score</th>
+                                <th style="padding: 24px;">Estimated Val.</th>
+                                <th style="padding: 24px;">Routing Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lead-table-body">
+                            <tr>
+                                <td colspan="4"
+                                    style="padding: 60px; text-align: center; color: var(--text-secondary);">
+                                    <div style="letter-spacing: 2px; font-size: 0.8rem; font-weight: 600;">CONNECTING TO
+                                        GLOBAL MEMORY ENGINE...</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 60px 0; text-align: center; color: var(--text-secondary);">
+        <p style="font-size: 0.8rem; letter-spacing: 1px;">&copy; 2026 MANOKAMANA SOLAR OS | AGENTIC GROWTH ENGINE</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

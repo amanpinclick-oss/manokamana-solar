@@ -1,0 +1,12 @@
+{
+    "total_leads": 6,
+    "tier_counts": {
+        "A": 0,
+        "B": 6,
+        "C": 0
+    },
+    "published_assets_count": 1,
+    "current_risk_health": "Healthy",
+    "total_capex_potential": 20250000.0,
+    "timestamp": "now"
+}
