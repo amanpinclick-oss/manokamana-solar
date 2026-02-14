@@ -7,6 +7,7 @@ from agents.lead_intelligence_engine import LeadIntelligenceEngine
 from agents.governance_risk_engine import GovernanceRiskEngine
 from agents.analytics_dashboard_engine import AnalyticsDashboardEngine
 from agents.carbon_reporting_engine import CarbonReportingEngine
+from agents.social_distribution_swarm import SocialDistributionSwarm
 from core.optimization_engine import StrategicReallocationEngine
 from core.phase_manager import BudgetPhaseManager
 
@@ -21,6 +22,7 @@ async def main():
     orchestrator.register_node(GovernanceRiskEngine())
     orchestrator.register_node(AnalyticsDashboardEngine())
     orchestrator.register_node(CarbonReportingEngine())
+    orchestrator.register_node(SocialDistributionSwarm())
     orchestrator.register_node(StrategicReallocationEngine())
     orchestrator.register_node(BudgetPhaseManager())
 
@@ -84,6 +86,10 @@ async def main():
     print("\nStep 5: Final Analytics and Optimization")
     await orchestrator.run_node("NODE_6")
     await orchestrator.run_node("NODE_7")
+
+    # 5. Marketing Swarm
+    print("\nStep 6: Social Distribution Swarm")
+    await orchestrator.run_node("NODE_10")
 
     print("\n--- Simulation Complete ---\n")
 
