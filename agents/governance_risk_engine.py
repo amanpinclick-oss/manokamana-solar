@@ -32,6 +32,14 @@ class GovernanceRiskEngine(BaseNode):
             risk_score += 20
             flags.append("SEO Risk: Thin content")
 
+        # Sustainability Alignment Check
+        co2_limit = inputs.get("co2_offset_limit", 1500) # Default limit for standard industrial
+        actual_co2 = inputs.get("actual_co2_offset", 0)
+        
+        if actual_co2 > co2_limit:
+            risk_score += 50
+            flags.append("Sustainability Risk: CO2 offset claim exceeds industrial baseline. Requires manual audit.")
+
         self.global_memory.update_state("current_risk_score", risk_score)
         self.log(f"Risk Score: {risk_score} | Flags: {flags}")
 

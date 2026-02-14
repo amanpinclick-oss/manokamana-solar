@@ -6,6 +6,7 @@ from agents.authority_content_engine import AuthorityContentEngine
 from agents.lead_intelligence_engine import LeadIntelligenceEngine
 from agents.governance_risk_engine import GovernanceRiskEngine
 from agents.analytics_dashboard_engine import AnalyticsDashboardEngine
+from agents.carbon_reporting_engine import CarbonReportingEngine
 from core.optimization_engine import StrategicReallocationEngine
 from core.phase_manager import BudgetPhaseManager
 
@@ -19,6 +20,7 @@ async def main():
     orchestrator.register_node(LeadIntelligenceEngine())
     orchestrator.register_node(GovernanceRiskEngine())
     orchestrator.register_node(AnalyticsDashboardEngine())
+    orchestrator.register_node(CarbonReportingEngine())
     orchestrator.register_node(StrategicReallocationEngine())
     orchestrator.register_node(BudgetPhaseManager())
 
@@ -59,13 +61,22 @@ async def main():
     print("\nStep 4: Lead Processing and Phase Transition Simulation")
     # Simulate 6 leads to trigger Phase 2
     for i in range(6):
-        await orchestrator.run_node("NODE_4", {
+        # NODE_4 Processes lead and puts it in memory
+        lead_result = await orchestrator.run_node("NODE_4", {
             "lead": {
-                "name": f"Lead {i}",
-                "roof_size": 10000,
-                "electricity_bill": 60000
+                "name": f"Industrial Client {i}",
+                "roof_size": 25000,
+                "electricity_bill": 150000,
+                "operation_type": "manufacturing"
             }
         })
+
+        # Step 4.2: If Tier A, Generate Carbon Environmental Report (NODE_9)
+        if lead_result.metadata.get("score") == "A":
+            await orchestrator.run_node("NODE_9", {
+                "lead": {"name": f"Industrial Client {i}"},
+                "roi_results": lead_result.data
+            })
     
     await orchestrator.run_node("NODE_8") # Check phase
 
