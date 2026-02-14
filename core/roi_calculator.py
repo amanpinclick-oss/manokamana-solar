@@ -10,6 +10,8 @@ class ROICalculator:
         self.cost_per_kw = cost_per_kw
         self.units_per_kw_monthly = units_per_kw_monthly
         self.rate_per_unit = rate_per_unit
+        # CO2 Factor: ~0.82 kg per kWh for Indian grid
+        self.co2_factor_kg_per_kwh = 0.82
 
     def calculate(self, roof_size_sqft: float, monthly_bill_inr: float) -> Dict[str, float]:
         """
@@ -29,10 +31,15 @@ class ROICalculator:
         
         payback_years = capex / (monthly_savings * 12) if monthly_savings > 0 else 0
         
+        # CO2 Calculation
+        annual_generation_kwh = final_capacity_kw * self.units_per_kw_monthly * 12
+        annual_co2_offset_tons = (annual_generation_kwh * self.co2_factor_kg_per_kwh) / 1000
+
         return {
             "capacity_kw": round(final_capacity_kw, 2),
             "capex_estimate": round(capex, 2),
             "monthly_savings": round(monthly_savings, 2),
             "payback_years": round(payback_years, 2),
-            "roi_percentage": round((monthly_savings * 12 / capex) * 100, 2) if capex > 0 else 0
+            "roi_percentage": round((monthly_savings * 12 / capex) * 100, 2) if capex > 0 else 0,
+            "annual_co2_offset_tons": round(annual_co2_offset_tons, 2)
         }

@@ -115,4 +115,3 @@ Thumbs.db
 .antigravity/
 public/solar_hero_industrial.png
 config/*.json
-!config/gsc-service.json

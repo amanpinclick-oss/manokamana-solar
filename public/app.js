@@ -68,6 +68,9 @@ async function loadDashboardStats() {
         const tierA = data.tier_counts ? data.tier_counts.A : 0;
         document.getElementById('stat-tier-a').innerText = tierA || 0;
 
+        const co2 = data.total_co2_offset || 0.0;
+        document.getElementById('stat-co2').innerText = `${co2.toFixed(1)}t`;
+
         document.getElementById('stat-phase').innerText = data.published_assets_count > 0 ? 'PHASE 2: OPTIMIZING' : 'PHASE 1: INITIALIZING';
 
         const health = data.current_risk_health === 'Healthy' ? 100 : 85;
@@ -101,14 +104,15 @@ async function loadLeadTable() {
 
         rows.forEach(row => {
             const columns = row.split(',');
-            if (columns.length < 3) return;
+            if (columns.length < 5) return; // Expecting more columns now
 
-            const [timestamp, score, capex] = columns;
+            const [timestamp, score, capex, industry, co2] = columns;
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td style="padding: 24px;">${timestamp}</td>
+                <td style="padding: 24px; text-transform: uppercase; font-size: 0.8rem;">${industry}</td>
                 <td style="padding: 24px;"><span style="color: ${score === 'A' ? 'var(--accent)' : '#fff'}; font-weight: 700;">${score}</span></td>
-                <td style="padding: 24px;">₹${parseFloat(capex).toLocaleString('en-IN')}</td>
+                <td style="padding: 24px;">${co2}t CO2</td>
                 <td style="padding: 24px;">
                     <span style="padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; background: ${score === 'A' ? 'rgba(255, 180, 0, 0.1)' : 'rgba(255,255,255,0.05)'}; color: ${score === 'A' ? 'var(--accent)' : 'var(--text-secondary)'};">
                         ${score === 'A' ? 'PRIORITY ROUTING' : 'NURTURING'}

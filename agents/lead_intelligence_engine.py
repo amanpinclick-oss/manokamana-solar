@@ -27,20 +27,41 @@ class LeadIntelligenceEngine(BaseNode):
         roi_results = calculator.calculate(roof_size, monthly_bill)
         
         # Scoring Logic (A: Industrial, B: Commercial, C: Small Commercial/Residential)
+        industry_type = lead_data.get("operation_type", "other")
+        multipliers = {
+            "manufacturing": 1.2,
+            "cold-storage": 1.5,
+            "warehousing": 1.1,
+            "other": 1.0
+        }
+        
+        effective_monthly_bill = monthly_bill * multipliers.get(industry_type, 1.0)
+        
         score = "C"
-        if monthly_bill > 50000 and roi_results["payback_years"] < 4.5:
+        if effective_monthly_bill > 50000 and roi_results["payback_years"] < 4.5:
             score = "A"
-        elif monthly_bill > 15000:
+        elif effective_monthly_bill > 15000:
             score = "B"
             
         roi_results["lead_score"] = score
+        roi_results["industry"] = industry_type
         roi_results["routing"] = "Sales Dashboard" if score in ["A", "B"] else "Nurture Sequence"
         
         # Send Slack Alert for Tier A Leads
         if score == "A":
             await self._send_slack_alert(lead_data, roi_results)
 
-        self.global_memory.append_to_list("lead_quality", {"timestamp": "now", "score": score, "capex": roi_results["capex_estimate"]})
+        # Update global CO2 stats
+        current_co2 = self.global_memory.get_state("total_co2_offset") or 0.0
+        self.global_memory.update_state("total_co2_offset", current_co2 + roi_results["annual_co2_offset_tons"])
+
+        self.global_memory.append_to_list("lead_quality", {
+            "timestamp": "now", 
+            "score": score, 
+            "capex": roi_results["capex_estimate"],
+            "industry": industry_type,
+            "co2_offset": roi_results["annual_co2_offset_tons"]
+        })
         
         self.log(f"Lead Scored: {score} | Payback: {roi_results['payback_years']} years | Capacity: {roi_results['capacity_kw']}kW")
         

@@ -1,7 +1,7 @@
-timestamp,score,capex
-now,B,3375000.0
-now,B,3375000.0
-now,B,3375000.0
-now,B,3375000.0
-now,B,3375000.0
-now,B,3375000.0
+timestamp,score,capex,industry,co2_offset
+now,B,3375000.0,other,66.42
+now,B,3375000.0,other,66.42
+now,B,3375000.0,other,66.42
+now,B,3375000.0,other,66.42
+now,B,3375000.0,other,66.42
+now,B,3375000.0,other,66.42

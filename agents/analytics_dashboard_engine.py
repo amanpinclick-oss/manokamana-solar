@@ -41,6 +41,7 @@ class AnalyticsDashboardEngine(BaseNode):
             "published_assets_count": len(assets),
             "current_risk_health": "Healthy" if risk_score < 50 else "High Risk",
             "total_capex_potential": sum([l.get("capex", 0) for l in leads]),
+            "total_co2_offset": round(self.global_memory.get_state("total_co2_offset") or 0.0, 2),
             "timestamp": inputs.get("timestamp", "now")
         }
         

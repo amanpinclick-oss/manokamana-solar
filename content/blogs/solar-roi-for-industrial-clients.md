@@ -1,7 +1,7 @@
 ---
 title: Solar ROI for Industrial Clients
-date: 2026-02-13
-schema: {"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Solar ROI for Industrial Clients", "datePublished": "2026-02-13T01:31:09.913993", "author": {"@type": "Organization", "name": "Manokamana Solar"}}
+date: 2026-02-14
+schema: {"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Solar ROI for Industrial Clients", "datePublished": "2026-02-14T11:53:55.003991", "author": {"@type": "Organization", "name": "Manokamana Solar"}}
 ---
 
 <h1>Solar ROI for Industrial Clients</h1>

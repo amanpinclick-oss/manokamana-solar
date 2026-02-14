@@ -8,5 +8,6 @@
     "published_assets_count": 1,
     "current_risk_health": "Healthy",
     "total_capex_potential": 20250000.0,
+    "total_co2_offset": 398.52,
     "timestamp": "now"
 }
